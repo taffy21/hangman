@@ -9,20 +9,22 @@ from kivy.uix.label import Label
 from random import choice
 import re
 
+
+def word_hider(word):
+    count = len(word)
+    return "_" * count
+
+
 class MyLabel(Label):
     word = StringProperty
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.word = self.word_hider()
-        self.text = self.word
+        self.word = self.begin_game()
+        self.text = word_hider(self.word)
 
     def begin_game(self):
-        self.word = choice(["CHUCK", "AEROPLANE", "DEVELOPMENT"])
+        self.word = choice(["AEROPLANE"])
         return self.word
-
-    def word_hider(self):
-        count = len(self.begin_game())
-        return "_" * count
 
     def combineListLetters(self, arg):   #not sure how this is meant to work @ ALL
         word = ""
@@ -30,21 +32,18 @@ class MyLabel(Label):
             word += i
         return word
 
-    def wordPlayer(self):
-        playing = True
-        wrong_count = 0
-        complete = self.word_hider()
-        selected_word = self.begin_game()
-        while playing:
-            letter = self.ids.buttonA.text
-            if letter in selected_word:
-                indexes = [i.start() for i in re.finditer(letter, selected_word)]
-                for index in indexes:
-                    complete[index] = letter
-            else:
-                wrong_count += 1
-            if selected_word == self.combineListLetters(complete) or wrong_count == 10:
-                playing = False
+    def wordPlayer(self, instance):
+        letter = instance.text
+        self.trial = list(self.text)
+        if letter in self.word:
+            indexes = [i.start() for i in re.finditer(letter, self.word)]
+            print(letter)
+            for index in indexes:
+                self.trial[index] = letter
+            self.text = self.combineListLetters(self.trial)
+        else:
+            pass
+
 
 
 class MyBox(BoxLayout):
