@@ -1,101 +1,232 @@
-MyBox:
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
 
-<MyBox>:
-    orientation: "vertical"
+MyManager:
+    FirstScreen:
+    GameScreen:
+    GameOver:
+
+<MyManager>:
+    id: screen_one
+    transition: FadeTransition()
+
+
+<FirstScreen>:
+    name: "first"
     BoxLayout:
-        orientation:"horizontal"
-        size_hint_y: 0.20
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: 0.5, 0.6, 0.7, 0.5
+            Rectangle:
+                size: self.width, self.height
         Label:
-            id: score
-            text: "Score: " #to insert f-string
+            text: "Hangman Game - Lets Go!!!"
+            font_size: 24
+        Button:
+            text: "Click to Play"
+            size_hint_y: 0.15
+            background_color: 'blue'
+            on_press:
+                app.root.current = 'second'
+
+<GameScreen>:
+    name: "second"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 0.0, 0.7, 0.9, 0.5
+                Rectangle:
+                    size: self.width, self.height
+                    pos: self.pos
+            orientation:"horizontal"
+            size_hint_y: 0.10
+            Label:
+                id: score
+                text: "Score: " #to insert f-string
+                font_size: 36
+            Label:
+                id: time
+                text: "Time: " #to insert f-string
+                font_size: 36
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.60
+            Widget:
+                id: hangman_image
+                size_hint_x: 1.1
+                canvas:
+                    Color:
+                        rgba: 0.5, 0.5, 0.5, 0.5
+                    Rectangle:
+                        size: self.width, self.height
+                        pos: self.pos
+            MyLabel:
+                id: game_word
+                font_size: 50
+        GridLayout:
+            cols: 5
+            size_hint_y: 0.3
+            Button:
+                text: "A"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "B"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "C"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "D"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "E"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "F"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "G"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "H"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "I"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "J"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "K"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "L"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "M"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "N"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "O"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "P"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "Q"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "R"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "S"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "T"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "U"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "V"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "W"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "X"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "Y"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+            Button:
+                text: "Z"
+                on_press:
+                    root.ids.game_word.wordPlayer(self)
+                    self.disabled = True
+
+
+<GameOver>:
+    name: "third"
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: 0.0, 0.8, 0.8, 0.5
+            Rectangle:
+                size: self.width, self.height
+        orientation: 'vertical'
         Label:
-            id: time
-            text: "Time: " #to insert f-string
-    Widget:
-        id: hangman_image
-    MyLabel:
-        id: game_word
-        font_size: "50dp"
-    GridLayout:
-        cols: 5
-        Button:
-            text: "A"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "B"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "C"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "D"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "E"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "F"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "G"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "H"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "I"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "J"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "K"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "L"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "M"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "N"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "O"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "P"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "Q"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "R"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "S"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "T"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "U"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "V"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "W"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "X"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "Y"
-            on_press: root.ids.game_word.wordPlayer(self)
-        Button:
-            text: "Z"
-            on_press: root.ids.game_word.wordPlayer(self)
+            text: "Game Over"
+            font_size: 32
+        GridLayout:
+            cols:2
+            size_hint_y: 0.15
+            Button:
+                text: "Replay"
+                on_press:
+                    app.root.current = "first"
+
+            Button:
+                text: "Quit"
+                on_press: app.stop()
+
+
+
+
 
 <MyLabel>:
 

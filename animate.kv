@@ -1,0 +1,15 @@
+HangBox:
+
+<HangBox>:
+    orientation: "vertical"
+    MyWidget:
+        id: screen
+    BoxLayout:
+        size_hint_y: 0.25
+        Button:
+            text: "Next"
+            on_press: root.ids.screen.draw()
+        Button:
+            text: "Delete"
+
+<MyWidget>:
